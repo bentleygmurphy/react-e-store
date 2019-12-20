@@ -1,40 +1,55 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import "./App.css";
+import store from './store'
 
-import{
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch
-}from 'react-router-dom'
+import Nav from "./components/Nav";
 
-import StorePage from './components/StorePage';
-import CartPage from './components/CartPage';
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      error: null,
+      isLoaded: false,
+    };
+  }
 
-function App() {
-  return (
-    <Router>
-      <div className="App">
-        <div className = "nav">
-          <Link to = "/">
-            Store
-          </Link>
-          <Link to = "/cart">
-            Cart
-          </Link>
+  componentDidMount() {
+    store.subscribe(() => this.forceUpdate())
+    fetch("https://my-json-server.typicode.com/tdmichaelis/json-api/products")
+      .then(res => res.json())
+      .then(
+        result => {
+          this.setState({
+            isLoaded: true,
+          });
+          store.dispatch({
+            type: 'SET_PRODUCTS',
+            products: result 
+          })
+        },
+        error => {
+          this.setState({
+            isLoaded: true,
+            error
+          });
+        }
+      );
+  }
+
+  render() {
+    const { error, isLoaded } = this.state;
+    if (error) {
+      return <div>Error: {error.message}</div>;
+    } else if (!isLoaded) {
+      return <div>Loading...</div>;
+    } else {
+      return (
+        <div>
+          <Nav />
         </div>
-        <Switch>
-          <Route exact path="/">
-            <StorePage />
-          </Route>
-          <Route path="/cart">
-            <CartPage />
-          </Route>
-          <Route render={()=> (<div>404 NOT FOUND</div>)} />
-        </Switch>
-      </div>
-    </Router>
-  );
+      );
+    }
+  }
 }
 
 export default App;
