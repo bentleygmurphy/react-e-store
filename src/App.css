@@ -1,7 +1,3 @@
-.App {
-  text-align: center;
-}
-
 .nav {
   display: flex;
   align-items: center;
@@ -14,3 +10,25 @@
   text-decoration: none;
   color: black;
 }
+
+.storeContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  /* maybe percent max */
+  max-width: 300px;
+  margin: 10px;
+}
+
+.card:hover {
+  cursor: pointer;
+}
+
+.cardImg {
+  max-height: 300px;
+  overflow: hidden;
+}
+

@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import "./bootstrap.css";
 import store from './store'
 
 import Nav from "./components/Nav";
@@ -14,7 +15,6 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    store.subscribe(() => this.forceUpdate())
     fetch("https://my-json-server.typicode.com/tdmichaelis/json-api/products")
       .then(res => res.json())
       .then(

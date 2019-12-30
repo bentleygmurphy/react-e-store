@@ -5,21 +5,13 @@ import store from "../store";
 import StoreItem from "./StoreItem";
 
 class StorePage extends React.Component {
-  componentDidMount() {
-    store.subscribe(() => this.forceUpdate());
-  }
-
   render() {
+    store.subscribe(() => this.forceUpdate());
     return (
-      <div>
-        <StoreItem />
-        <ul>
+      <div className="storeContainer">
           {store.getState().products.map(item => (
-            <li key={item.id}>
-              {item.title} {item.price}
-            </li>
+              <StoreItem title={item.title} desc={item.description} imgUrl={item.img} key={item.id}/>
           ))}
-        </ul>
       </div>
     );
   }
