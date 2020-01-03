@@ -1,8 +1,11 @@
 import React from "react";
 import "./App.css";
 import "./bootstrap.css";
-import store from './store'
-
+import store from "./store";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import StorePage from "./components/StorePage";
+import CartPage from "./components/CartPage";
+import ItemDetails from "./components/ItemDetails";
 import Nav from "./components/Nav";
 
 class App extends React.Component {
@@ -10,7 +13,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       error: null,
-      isLoaded: false,
+      isLoaded: false
     };
   }
 
@@ -20,12 +23,12 @@ class App extends React.Component {
       .then(
         result => {
           this.setState({
-            isLoaded: true,
+            isLoaded: true
           });
           store.dispatch({
-            type: 'SET_PRODUCTS',
-            products: result 
-          })
+            type: "SET_PRODUCTS",
+            products: result
+          });
         },
         error => {
           this.setState({
@@ -45,7 +48,15 @@ class App extends React.Component {
     } else {
       return (
         <div>
-          <Nav />
+          <Router>
+            <Nav />
+            <Switch>
+              <Route exact path="/" component={StorePage} />
+              <Route path="/products/:productid" component={ItemDetails} />
+              <Route path="/cart" component={CartPage} />
+              <Route render={() => <div>404 NOT FOUND</div>} />
+            </Switch>
+          </Router>
         </div>
       );
     }

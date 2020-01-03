@@ -21,14 +21,15 @@
   /* maybe percent max */
   max-width: 300px;
   margin: 10px;
+  transition: 0.25s;
 }
 
 .card:hover {
   cursor: pointer;
+  box-shadow: 0 0 5px -1px gray;
 }
 
 .cardImg {
   max-height: 300px;
   overflow: hidden;
 }
-
