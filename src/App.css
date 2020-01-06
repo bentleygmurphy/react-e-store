@@ -27,9 +27,14 @@
 .card:hover {
   cursor: pointer;
   box-shadow: 0 0 5px -1px gray;
+  transform: scale(1.05, 1.05);
 }
 
 .cardImg {
   max-height: 300px;
   overflow: hidden;
+}
+
+.detailContainer {
+  margin: 10px;
 }

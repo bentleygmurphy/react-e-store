@@ -6,7 +6,7 @@ class Nav extends React.Component {
     return (
       <div className="nav">
         <Link to="/">Store</Link>
-        <Link to="/cart">Cart</Link>
+        <Link to="/cart">Cart (0)</Link>
       </div>
     );
   }

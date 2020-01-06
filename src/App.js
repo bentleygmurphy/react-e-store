@@ -5,7 +5,7 @@ import store from "./store";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import StorePage from "./components/StorePage";
 import CartPage from "./components/CartPage";
-import ItemDetails from "./components/ItemDetails";
+import InfoPage from "./components/InfoPage";
 import Nav from "./components/Nav";
 
 class App extends React.Component {
@@ -52,7 +52,7 @@ class App extends React.Component {
             <Nav />
             <Switch>
               <Route exact path="/" component={StorePage} />
-              <Route path="/products/:productid" component={ItemDetails} />
+              <Route path="/products/:productid" component={InfoPage} />
               <Route path="/cart" component={CartPage} />
               <Route render={() => <div>404 NOT FOUND</div>} />
             </Switch>

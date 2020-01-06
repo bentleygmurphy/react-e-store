@@ -14,7 +14,6 @@ class StorePage extends React.Component {
         {store.getState().products.map(item => (
           <StoreItem
             title={item.title}
-            desc={item.description}
             imgUrl={item.img}
             price={item.price}
             key={item.id}
