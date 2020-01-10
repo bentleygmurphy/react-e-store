@@ -3,8 +3,11 @@ import store from "../store";
 import DisplayInfo from "./DisplayInfo"
 
 class InfoPage extends React.Component {
-  renderItem = () => {
+  componentDidMount() {
     store.subscribe(() => this.forceUpdate());
+  }
+
+  renderItem = () => {
     const theOne = store
       .getState()
       .products.find(

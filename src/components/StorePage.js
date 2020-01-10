@@ -4,11 +4,14 @@ import StoreItem from "./StoreItem";
 
 class StorePage extends React.Component {
   onClickHandler = id => {
-    window.location.pathname = "products/" + id;
+    this.props.history.push("products/" + id)
   };
 
-  render() {
+  componentDidMount() {
     store.subscribe(() => this.forceUpdate());
+  }
+
+  render() {
     return (
       <div className="storeContainer">
         {store.getState().products.map(item => (

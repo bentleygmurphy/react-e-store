@@ -1,11 +1,12 @@
-.nav {
+.navBar {
   display: flex;
   align-items: center;
   justify-content: center;
   box-shadow: 0 4px 5px -2px gray;
+  margin-bottom: 20px;
 }
 
-.nav a {
+.navBar a {
   padding: 20px;
   text-decoration: none;
   color: black;
@@ -17,14 +18,13 @@
   justify-content: center;
 }
 
-.card {
-  /* maybe percent max */
+.storeCard {
   max-width: 300px;
   margin: 10px;
   transition: 0.25s;
 }
 
-.card:hover {
+.storeCard:hover {
   cursor: pointer;
   box-shadow: 0 0 5px -1px gray;
   transform: scale(1.05, 1.05);
@@ -36,5 +36,36 @@
 }
 
 .detailContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 10px;
+}
+
+.cartContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#checkoutBtn {
+  width: 100%;
+  height: 80px;
+  position: fixed;
+  bottom: 0px;
+  font-size: 25px;
+  border-radius: 0px;
+}
+
+/* should be class */
+#removeBtn {
+  width: 35%;
+  border-radius: 0px;
+}
+
+.cartCard {
+  max-width: 300px;
+  margin: 10px;
+  transition: 0.25s;
 }

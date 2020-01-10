@@ -6,7 +6,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import StorePage from "./components/StorePage";
 import CartPage from "./components/CartPage";
 import InfoPage from "./components/InfoPage";
-import Nav from "./components/Nav";
+import NavBar from "./components/NavBar";
 
 class App extends React.Component {
   constructor(props) {
@@ -49,7 +49,7 @@ class App extends React.Component {
       return (
         <div>
           <Router>
-            <Nav />
+            <NavBar />
             <Switch>
               <Route exact path="/" component={StorePage} />
               <Route path="/products/:productid" component={InfoPage} />
