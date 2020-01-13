@@ -12,22 +12,30 @@ class CartPage extends React.Component {
     });
   }
 
+  getTotal() {
+    let sum = 0;
+    this.getProducts().forEach(item => {
+      return (sum += item.price);
+    });
+    return sum;
+  }
+
   //does not work yet, button does not register event
   remove = id => {
     store.dispatch({
       type: "REMOVE_FROM_CART",
       productid: id
     });
-    console.log('hi')
-  }
+    console.log(id);
+  };
 
   checkout() {
-    console.log("Checking Out...")
+    console.log("Checking Out...");
   }
 
   componentDidMount() {
     store.subscribe(() => this.forceUpdate());
-    console.log(this.getProducts())
+    console.log(this.getProducts());
   }
 
   render() {
@@ -46,7 +54,7 @@ class CartPage extends React.Component {
         </div>
         <Button
           id="checkoutBtn"
-          title="Checkout ($0)"
+          title={"Checkout ($" + this.getTotal() + ")"}
           color="success"
           onClickHandler={this.checkout}
         />
