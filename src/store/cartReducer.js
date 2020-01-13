@@ -5,7 +5,7 @@ function cartReducer(state = [], action) {
         ? state
         : state.concat(action.productid);
     case "REMOVE_FROM_CART":
-      return state.splice(state.indexOf(action.productid), 1)
+      return state.filter(item => item !== action.productid)
     default:
       return state;
   }

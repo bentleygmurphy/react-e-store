@@ -20,7 +20,6 @@ class CartPage extends React.Component {
     return sum;
   }
 
-  //does not work yet, button does not register event
   remove = id => {
     store.dispatch({
       type: "REMOVE_FROM_CART",
